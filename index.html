@@ -34,14 +34,27 @@
                             <small v-if="showDesc">
                                 {{job.desc}}
                             </small>
-                            <img src="icons/trash.svg" alt="trash" @click="removeItem()">sdfsdf
+                            <img src="icons/trash.svg" alt="trash" @click.stop="showRemoveModal(i)">
                         </li>
             
                       </ul>
                 </div>
             </div>
         </form>
-          
+        
+        <!-- The Modal -->
+        <div id="myModal" class="modal" v-show="displayRemoveModal" @click="displayRemoveModal=false">
+
+            <!-- Modal content -->
+            <div class="modal-content" @click.stop>
+                Are You Sure ?
+                <br>
+                <button class="submit alert button" @click="removeItem(removeItemIndex)">yes remove</button>
+                <button class="submit secondary button" @click="displayRemoveModal=false">no cancel</button>
+            </div>
+        
+        </div>
+        
         
     </div>
 
